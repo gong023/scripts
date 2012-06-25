@@ -32,6 +32,4 @@ class Taro < Person
     end
 end
 
-Taro.new.appointment.each do |key,value|
-    puts "#{key} is #{value}"
-end
+Taro.new.appointment.each {|key,value| puts "#{key} is #{value}"} 
