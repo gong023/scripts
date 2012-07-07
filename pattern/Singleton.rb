@@ -1,5 +1,5 @@
 class Person
-    @@instance
+    @instance
     private 
     def initialize name,age,gender
         @name   = name
@@ -8,20 +8,21 @@ class Person
     end
 
     def self.getInstance name,age,gender
-        @@instance = self.new(name,age,gender)
-        return @@instance 
+        @instance = self.new(name,age,gender)
+    end
+
+    public
+    def tellTrueAge
+        @age
     end
 
     public 
     def tellLieAge 
         fake_age = @age - 3
-        if fake_age > 0
-            return fake_age
-        else
-            return @age
-        end
+        fake_age > 0 ? fake_age : @age
     end
 end
 
 instance = Person.getInstance('taro',21,'male')
+p instance.tellTrueAge
 p instance.tellLieAge
